@@ -1,4 +1,4 @@
-package com.example.flutter_native
+package com.example.application
 
 import android.os.Bundle
 

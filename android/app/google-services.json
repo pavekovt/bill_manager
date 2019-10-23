@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "385300370109",
+    "firebase_url": "https://bill-manager-b147f.firebaseio.com",
+    "project_id": "bill-manager-b147f",
+    "storage_bucket": "bill-manager-b147f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385300370109:android:c2af730334467e0cf59dd4",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385300370109-r88hp4hsu56nbpuiau4ke27lafktktcq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACukWXorV-dLpD4dEKHdky0on8CE4-6LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385300370109-r88hp4hsu56nbpuiau4ke27lafktktcq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
