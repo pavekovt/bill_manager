@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native/Actions/PageActions.dart';
 import 'package:flutter_native/Reducers/AppState.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
+import 'Domain/Pages.dart';
 import 'Domain/Todo.dart';
 import 'Containers/TodoListContainer.dart';
+import 'Widgets/HomePage.dart';
 
 void main() {
-  final store = new Store<AppState>(appReducer, initialState: AppState(todos: [
-    Todo(id: "1", title: "Buy toilet paper", completed: false),
-    Todo(id: "2", title: "Get drunk", description: "With a lot of friends", completed: false)
-  ]));
+  final store = new Store<AppState>(appReducer, initialState: AppState(todos: []));
 
   runApp(TodoApp(title: "YA!", store: store,));
 }
@@ -29,15 +29,25 @@ class TodoApp extends StatelessWidget {
       store: store,
       child: MaterialApp(
         title: 'Welcome to Flutter',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Welcome to Flutter'),
+        home: StoreConnector<AppState, _ViewModel>(
+          converter: (store) => _ViewModel(
+            currentPage: store.state.currentPage,
+            pageChange: (newPage) => store.dispatch(PageChangeAction(newPage: newPage))
           ),
-          body: Center(
-            child: TodoListContainer()
-          ),
-        ),
+          builder: (context, vm) =>
+              HomePage(currentPage: vm.currentPage, changePage: vm.pageChange),
+        )
       ),
     );
   }
+}
+
+typedef ChangePageFunction(Pages page);
+
+@immutable
+class _ViewModel {
+  final Pages currentPage;
+  final ChangePageFunction pageChange;
+
+  _ViewModel({this.currentPage, this.pageChange});
 }

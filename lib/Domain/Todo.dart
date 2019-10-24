@@ -6,5 +6,5 @@ class Todo {
 
   bool completed;
 
-  Todo({this.id, this.title, this.description, this.completed});
+  Todo({this.id, this.title, this.description, this.completed = false});
 }

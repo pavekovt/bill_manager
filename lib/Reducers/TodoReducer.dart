@@ -5,7 +5,7 @@ import 'package:flutter_native/Reducers/AppState.dart';
 typedef AppState Test(state, action);
 
 final addTodoReducer = (AppState state, AddTodoAction action) =>
-    AppState(todos: state.todos..add(action.payload));
+    AppState(todos: state.todos..add(action.payload..id = state.todos.length.toString()));
 
 final removeTodoReducer = (AppState state, RemoveTodoAction action) =>
     AppState(todos: state.todos.where((todo) => todo.id != action.todoId).toList());

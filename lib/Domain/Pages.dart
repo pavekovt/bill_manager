@@ -1,0 +1,5 @@
+
+enum Pages {
+  Home,
+  CreateTodo
+}
