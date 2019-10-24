@@ -5,11 +5,12 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import 'Domain/Todo.dart';
-import 'Widgets/TodoList.dart';
+import 'Containers/TodoListContainer.dart';
 
 void main() {
   final store = new Store<AppState>(appReducer, initialState: AppState(todos: [
-//    Todo(id: "1", title: "Hello", description: "Ya", completed: false)
+    Todo(id: "1", title: "Buy toilet paper", completed: false),
+    Todo(id: "2", title: "Get drunk", description: "With a lot of friends", completed: false)
   ]));
 
   runApp(TodoApp(title: "YA!", store: store,));
@@ -33,7 +34,7 @@ class TodoApp extends StatelessWidget {
             title: Text('Welcome to Flutter'),
           ),
           body: Center(
-            child: TodoList()
+            child: TodoListContainer()
           ),
         ),
       ),

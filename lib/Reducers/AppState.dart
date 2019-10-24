@@ -13,4 +13,5 @@ class AppState {
 final appReducer = combineReducers<AppState>([
     TypedReducer<AppState, AddTodoAction>(addTodoReducer),
     TypedReducer<AppState, RemoveTodoAction>(removeTodoReducer),
+    TypedReducer<AppState, ToggleTodoAction>(toggleTodoReducer),
 ]);
