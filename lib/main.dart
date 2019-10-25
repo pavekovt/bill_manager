@@ -6,12 +6,16 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import 'Domain/Pages.dart';
-import 'Domain/Todo.dart';
-import 'Containers/TodoListContainer.dart';
 import 'Widgets/HomePage.dart';
 
 void main() {
-  final store = new Store<AppState>(appReducer, initialState: AppState(todos: []));
+  final store = new Store<AppState>(
+      appReducer,
+      initialState: AppState(
+        todos: [],
+        currentPage: Pages.Home
+      )
+  );
 
   runApp(TodoApp(title: "YA!", store: store,));
 }
@@ -27,7 +31,7 @@ class TodoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider(
       store: store,
-      child: MaterialApp(
+      child: CupertinoApp(
         title: 'Welcome to Flutter',
         home: StoreConnector<AppState, _ViewModel>(
           converter: (store) => _ViewModel(

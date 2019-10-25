@@ -11,11 +11,17 @@ class TodoListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: todos.map((todo) => TodoWidget(
-          todo: todo,
-          toggle: toggle,
-        )).toList()
-    );
+    return
+      CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text("Todos"),
+        ),
+        child: ListView(
+          children: todos.map((todo) => TodoWidget(
+            todo: todo,
+            toggle: toggle,
+          )).toList()
+        ),
+      );
   }
 }

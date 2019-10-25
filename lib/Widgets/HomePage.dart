@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native/Containers/TodoEditorContainer.dart';
 import 'package:flutter_native/Containers/TodoListContainer.dart';
 import 'package:flutter_native/Domain/Pages.dart';
-import 'package:flutter_native/Reducers/AppState.dart';
-import 'package:flutter_native/Widgets/TodoEditorWidget.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
 import '../main.dart';
 
@@ -23,16 +20,22 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  String pageToName(Pages page) {
+    switch (page) {
+      case Pages.Home: {
+        return "Home";
+      }
+      case Pages.CreateTodo: {
+        return "Create New Todo";
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome to Flutter'),
-      ),
-      body: Center(
-          child: getCurrentPage()
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+    return CupertinoTabScaffold(
+      tabBuilder: (context, index) => getCurrentPage(),
+      tabBar: CupertinoTabBar(
         currentIndex: Pages.values.indexOf(currentPage),
         onTap: (index) => changePage(Pages.values[index]),
         items: [

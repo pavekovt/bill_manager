@@ -13,7 +13,7 @@ class AppState {
   final List<Todo> todos;
   final Pages currentPage;
 
-  AppState({this.todos, this.currentPage = Pages.Home});
+  AppState({this.todos, this.currentPage});
 }
 
 final appReducer = combineReducers<AppState>([

@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native/Domain/Todo.dart';
@@ -15,30 +14,32 @@ class TodoEditorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          TextField(
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text("Create New Todo"),
+        ),
+        child: ListView(children: [
+          CupertinoTextField(
+            padding: EdgeInsets.all(16.0),
+            placeholder: "Title",
             onChanged: (value) => _title = value,
           ),
-          TextField(
+          CupertinoTextField(
+            padding: EdgeInsets.all(16.0),
+            placeholder: "Description",
             onChanged: (value) => _description = value,
           ),
           Padding(
-            padding: EdgeInsets.all(16.0),
-            child: CupertinoButton(
-              color: Colors.blue,
-              child: Text("Create Todo"),
-              onPressed: () => createTodo(Todo(
-                id: null,
-                description: _description,
-                title: _title
-              ))
-            )
+              padding: EdgeInsets.all(16.0),
+              child: CupertinoButton(
+                  color: Colors.blue,
+                  child: Text("Create Todo"),
+                  onPressed: () => createTodo(Todo(
+                      id: null, description: _description, title: _title)
+                  )
+              )
           )
-        ]
-      )
+        ])
     );
   }
 }
